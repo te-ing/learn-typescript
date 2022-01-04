@@ -1,7 +1,19 @@
-let todoItems;
+// type Todo = {
+//   id: number;
+//   title: string;
+//   done: boolean;
+// };
+
+interface ITodo {
+  id: number;
+  title: string;
+  done: boolean;
+}
+
+let todoItems: ITodo[];
 
 // api
-function fetchTodoItems() {
+function fetchTodoItems(): ITodo[] {
   const todos = [
     { id: 1, title: '안녕', done: false },
     { id: 2, title: '타입', done: false },
@@ -11,30 +23,30 @@ function fetchTodoItems() {
 }
 
 // crud methods
-function fetchTodos() {
+function fetchTodos(): object[] {
   const todos = fetchTodoItems();
   return todos;
 }
 
-function addTodo(todo) {
+function addTodo(todo: ITodo): void {
   todoItems.push(todo);
 }
 
-function deleteTodo(index) {
+function deleteTodo(index: number): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(index, todo) {
+function completeTodo(index: number, todo: ITodo): void {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
 
 // business logic
-function logFirstTodo() {
+function logFirstTodo(): object {
   return todoItems[0];
 }
 
-function showCompleted() {
+function showCompleted(): object[] {
   return todoItems.filter(item => item.done);
 }
 
@@ -44,7 +56,7 @@ function addTwoTodoItems() {
 }
 
 // NOTE: 유틸 함수
-function log() {
+function log(): void {
   console.log(todoItems);
 }
 
